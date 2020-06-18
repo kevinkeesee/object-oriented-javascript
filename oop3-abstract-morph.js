@@ -19,13 +19,95 @@ These sub-classes MUST implement the abstract methods of move() and act(), which
 
     class Creature {
         //your code here...
+        constructor(){
+            if(this.constructor == Creature){
+                throw new Error('Creature is an abstract class');
+            }
+        }
+
+        // As per the instructions, the methods CANNOT be called from either the abstract class or subclasses.
+        // I feel this is wrong but I want to get the instructions right.
+        move() {
+            console.log('Moved to a new location');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        act() {
+            console.log('Did an action');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
     }
 
     class Human extends Creature {
         //your code here...
+
+        constructor(name, weight){
+            this.#name = name;
+            this.#weight = weight;
+        }
+
+        // As per the instructions, the methods CANNOT be called from either the abstract class or subclasses.
+        // I feel this is wrong but I want to get the instructions right.
+        move = () => {
+            console.log('Moved to a new location');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        act = () => {
+            console.log('Did an action');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        socialize(){
+            console.log('Socialized with other humans');
+        }
     }
 
+    class Bird extends Creature {
+        constructor(featherColor, wingspan){
+            this.#featherColor = featherColor;
+            this.#wingspan = wingspan;
+        }
 
+        // As per the instructions, the methods CANNOT be called from either the abstract class or subclasses.
+        // I feel this is wrong but I want to get the instructions right.
+        move = () => {
+            console.log('Moved to a new location');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        act = () => {
+            console.log('Did an action');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        fly(){
+            console.log('Flew through the air');
+        }
+    }
+
+    class Reptile extends Creature {
+        constructor(hasLimbs, length){
+            this.#hasLimbs = hasLimbs;
+            this.#length = length;
+        }
+
+        // As per the instructions, the methods CANNOT be called from either the abstract class or subclasses.
+        // I feel this is wrong but I want to get the instructions right.
+        move = () => {
+            console.log('Moved to a new location');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        act = () => {
+            console.log('Did an action');
+            throw new Error('Function is not allowed to be called from either the abstract class or subclasses.');
+        }
+
+        sunbathe(){
+            console.log('Warmed up blood from exposure to sunlight');
+        }
+    }
 
 
 /*
@@ -39,7 +121,7 @@ class Person {
         console.log(this.name + " is eating");
     }
 
-    sleep = () => {
+    sleep() {
         console.log(this.name + " is sleeping");
     }
 
@@ -53,9 +135,8 @@ class Person {
 
     explain() {
         //this function should contain a console.log() explaining what you had to do to get the correct functions to work, and the reasoning behind what you did.
-        console.log("this explain method should contain explain what you had to do to get the correct functions to work, and the reasoning behind what you did.");
+        console.log("I changed the methods within the Teacher and Student classes into arrow functions, so they would be properly prioritized.");
     }
-
 }
 
 
@@ -68,11 +149,11 @@ class Teacher extends Person {
         this.name = name;
     }
 
-    eat() {
+    eat = () => {
         console.log(this.name + " loves to teach before eating");
     }
 
-    sleep() {
+    sleep = () => {
         console.log(this.name + " sleeps after preparing the lesson plan");
     }
 
@@ -80,7 +161,7 @@ class Teacher extends Person {
         console.log(this.name + " codes first, then teaches it the next day.");
     }
 
-    repeat() {
+    repeat = () => {
         console.log(this.name + " teaches, codes, eats, sleeps, and repeats");
     }
 }
@@ -88,15 +169,30 @@ class Teacher extends Person {
 
 class Student extends Person {
     //set up your methods in this student class, so all of these methods will override the methods from the super class.
+    constructor(name) {
+        super(name);
+        this.name = name;
+    }
 
     //eat method should print out - <stduent name> studies, then eats
+    eat = () => {
+        console.log(this.name + " studies, then eats");
+    }
 
     //sleep method should print out, <student name> studies coding so much, that they dream about it in their sleep
+    sleep = () => {
+        console.log(this.name + " studies coding so much, that they dream about it in their sleep");
+    }
 
     //code method should print out, <student name> was first overwhelmed by coding, but kept at it, and now has become a coding guru!
+    code = () => {
+        console.log(this.name + " was first overwhelmed by coding, but kept at it, and now has become a coding guru!");
+    }
 
     //repeat method should print out, <student name> keeps on studying, coding, eating, and sleeping, and puts it all on repeat.  
-
+    repeat = () => {
+        console.log(this.name + " keeps on studying, coding, eating, and sleeping, and puts it all on repeat.");
+    }
 }
 
 
@@ -137,7 +233,7 @@ class Cook {
     }
 
     explain = () => {
-        console.log("what could you do to get the prepare function to print out the food items that are being passed in to the function?  Once you figure it out, Write down your thought process in this explain method.");
+        console.log("I'd first narrow them down to one prepare function, but if that's not possible I'd change the first prepare method into an arrow function for it to be prioritized.");
     }
 
 }
